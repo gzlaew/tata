@@ -13,7 +13,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="card-body p-0">
               <div class="collapse code-collapse" id="example-code">
               </div>
@@ -22,66 +22,62 @@
                   <div class="table-responsive">
                     <table class="table table-sm fs--1 mb-0">
 
-                    <div class="d-flex flex-wrap gap-3 px-4 px-lg-3 py-3"><a class="btn btn-primary px-3 px-sm-5 px-md-10" href="index.php?pages=user&aksi=tambah"><span class="fas fa-plus me-2"></span>Tambah</a></div>
+                      <div class="d-flex flex-wrap gap-3 px-4 px-lg-3 py-3"><a class="btn btn-primary px-3 px-sm-5 px-md-10" href="index.php?pages=user&aksi=tambah"><span class="fas fa-plus me-2"></span>Tambah</a></div>
 
                       <thead>
-                      <tr>
-                      <th class="sort border-top ps-3" data-sort="name">No</th>
-    <th class="sort border-top ps-3" data-sort="photo">Foto</th>
-    <th class="sort border-top ps-3" data-sort="username">Username</th>
-    <th class="sort border-top" data-sort="email">Email</th>
-    <th class="sort border-top" data-sort="level">Level</th>
-    <th class="sort text-end align-middle pe-0 border-top" scope="col">Aksi</th>
-</tr>
+                        <tr>
+                          <th class="sort border-top ps-3" data-sort="name">No</th>
+                          <th class="sort border-top ps-3" data-sort="photo">Foto</th>
+                          <th class="sort border-top ps-3" data-sort="username">Username</th>
+                          <th class="sort border-top" data-sort="email">Email</th>
+                          <th class="sort border-top" data-sort="level">Level</th>
+                          <th class="sort text-end align-middle pe-0 border-top" scope="col">Aksi</th>
+                        </tr>
 
                       </thead>
                       <tbody class="list">
 
                         <?php
                         require_once '../inc/function.php';
-                     
-                     //memasukan sql ke dalam function query
-                     $TAMPIL = user_tampil  ("SELECT * FROM user ORDER BY user.user_id ASC");
-                         //ambil data dari tbl_siswa tbl_jurusan tbl_status
-                     
-                     
-                     $NO=1;
-                     // while($DATA = mysqli_fetch_assoc ($HASIL)){
-                     foreach ($TAMPIL as $DATA) : //mengganti kurung kurawal bua
+                        $TAMPIL = user_tampil("SELECT * FROM user ORDER BY user.user_id ASC");
+                        $NO = 1;
+                        foreach ($TAMPIL as $DATA) :
 
-?>
+                        ?>
 
-                        <tr>
-                        
-                          <td class="align-middle ps-3 name"><?php echo $NO; ?></td>
-                          <td class="align-middle email">
-                              
-                                  <img src="../foto/<?= $DATA['profile_picture']; ?>" alt="Profile Picture" style="width: 50px; height: 50px;">
-                              
-                          </td>
-                          <td class="align-middle age"><?= $DATA['username']; ?></td>
-                          <td class="align-middle age"><?= $DATA['email']; ?></td>
-                          <td>
-                              <?php 
-                              if($DATA ['role'] == "admin") { $badge="success"; }
-                                elseif($DATA ['role'] == "user") { $badge="warning"; 
+                          <tr>
+
+                            <td class="align-middle ps-3 name"><?php echo $NO; ?></td>
+                            <td class="align-middle email">
+
+                              <img src="../foto/<?= $DATA['profile_picture']; ?>" alt="Profile Picture" style="width: 50px; height: 50px;">
+
+                            </td>
+                            <td class="align-middle age"><?= $DATA['username']; ?></td>
+                            <td class="align-middle age"><?= $DATA['email']; ?></td>
+                            <td>
+                              <?php
+                              if ($DATA['role'] == "admin") {
+                                $badge = "success";
+                              } elseif ($DATA['role'] == "user") {
+                                $badge = "warning";
                               }
                               ?>
-                              <button type="button" class="btn btn-outline-<?php echo $badge;?>" > <?= $DATA ['role']; ?> </button>
+                              <button type="button" class="btn btn-outline-<?php echo $badge; ?>"> <?= $DATA['role']; ?> </button>
                             </td>
-                          <td class="align-middle white-space-nowrap text-end pe-0">
-                            <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
-                              <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="index.php?pages=user&aksi=edit&id=<?php echo $DATA ['user_id'];?>">edit</a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="index.php?pages=user&aksi=delete&id=<?php echo $DATA ['user_id'];?>">delete</a>
+                            <td class="align-middle white-space-nowrap text-end pe-0">
+                              <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
+                                <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="index.php?pages=user&aksi=edit&id=<?php echo $DATA['user_id']; ?>">edit</a>
+                                  <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="index.php?pages=user&aksi=delete&id=<?php echo $DATA['user_id']; ?>">delete</a>
+                                </div>
                               </div>
-                            </div>
-                          </td>
-                        </tr>
+                            </td>
+                          </tr>
 
-<?php                                                     
-   $NO++;                                                        
-  endforeach;
-?> 
+                        <?php
+                          $NO++;
+                        endforeach;
+                        ?>
 
                       </tbody>
                     </table>

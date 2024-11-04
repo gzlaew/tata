@@ -27,7 +27,6 @@ if (isset($_POST['Tambah'])) {
                                 <span class="image-preview__default-text" id="defaultText" style="display: none;">Image Preview</span>
                                 <button type="button" class="remove-image" id="removeButton">&#10006;</button>
                             </div>
-""
                             <!-- Input File untuk Memilih Gambar -->
                             <input type="file" name="Foto" class="form-control" id="chooseFile" >
                         </div>

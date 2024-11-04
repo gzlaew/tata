@@ -2,42 +2,41 @@
 <?php
 
 
-@$pages= $_GET['pages'];
+@$pages = $_GET['pages'];
 
 switch ($pages) {
 	case 'kategori':
 		include "../pages/kategori/kategori.php";
 		break;
-		case 'user':
+	case 'user':
 		include "../pages/user/user.php";
 		break;
-		case 'peminjaman':
+	case 'peminjaman':
 		include "../pages/peminjaman/peminjaman.php";
 		break;
-		case 'pengaduan':
+	case 'pengaduan':
 		include "../pages/pengaduan/pengaduan.php";
 		break;
-		case 'pengajuan':
+	case 'pengajuan':
 		include "../pages/pengajuan/pengajuan.php";
 		break;
-		case 'setting':
+	case 'setting':
 		include "../pages/setting/setting.php";
 		break;
-		case 'kategori':
-		include "../pages/kategori/kategori.php";
+	case 'menu':
+		include "../pages/menu/menu.php";
 		break;
-		case 'ruangan':
+	case 'ruangan':
 		include "../pages/ruangan/ruangan.php";
 		break;
-	
-	
+
+
 
 
 
 	default:
-		include"../pages/dashboard.php";
+		include "../pages/dashboard.php";
 		break;
-		
 }
 
 ?>
